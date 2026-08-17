@@ -6,6 +6,7 @@
 - "Combat Only" auras now check whether the parent actor is in combat, not merely whether a combat exists
 - Auras will now be refreshed (conditions & whether they should be suppressed) on combatant creation/deletion, so "Combat Only" effects will now immediately suppress (or un-suppress) upon the token being added or removed from combat
 - Auras will now be refreshed when token disposition is changed
+- Moved the repo to git.gay
 
 ## Version 2.1.1
 - Added German localization (thanks mhilbrunner!)
