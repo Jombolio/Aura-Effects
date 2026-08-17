@@ -51,6 +51,10 @@ jobs:
           mkdir tmp
           cp module.json tmp/module.json
           cp module.zip tmp/module.zip
+
+      - name: Generate Partial Changelog
+        run: |
+          grep -B 999 -m 2 "^## " CHANGELOG.md | head -n -2 | tail -n +4 > release_notes.md
       
       - name: Update Release with Files
         uses: actions/forgejo-release@v2.13.4
@@ -58,3 +62,4 @@ jobs:
           direction: upload
           release-dir: tmp
           override: true
+          release-notes-file: release_notes.md
