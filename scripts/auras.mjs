@@ -39,8 +39,18 @@ async function createToken(token, options, userId) {
   // Exit early for non-initiators, or if no active GM
   if (game.user.id !== userId) return;
   if (!token.actor) return;
-  if (!checkActiveGM()) return;
+  const activeGM = checkActiveGM();
+  if (!activeGM) return;
   await updateAllAuraRegions(token);
+  const toApply = getAuraRegions(token)
+    .reduce((acc, region) => {
+      const effect = fromUuidSync(region.getFlag("auraeffects", "origin"));
+      if (!effect) return acc;
+      if (!auraShouldApply(effect, token)) return acc;
+      acc.push(effect.uuid);
+      return acc;
+    }, []);
+  if (toApply.length) await activeGM.query("auraeffects.applyAuraEffects", {[token.actor.uuid]: toApply});
 }
 
 /**

@@ -1,5 +1,9 @@
 # Aura Effects Changelog
 
+## Version 2.2.1
+- Fixed a bug where tokens newly created within the bounds of an aura did not get affected by that aura
+- Fixed a potential bug in certain systems where Aura Effects sheet would fail to render
+
 ## Version 2.2.0
 - The "auraeffects.fromAura" flag will now contain the uuid of the source effect, and this will be used in lieu of the "origin" property, to avoid potential issues with systems that make changes to "origin"
 - Aura conditions will now be refreshed for all combatants when combat turn or round is modified

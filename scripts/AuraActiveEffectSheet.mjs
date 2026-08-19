@@ -22,7 +22,7 @@ export default function AuraActiveEffectSheetMixin(ActiveEffectSheet) {
       context = await super._preparePartContext(id, context);
       if (id === "aura") {
         context = foundry.utils.mergeObject(context, {
-          fields: this.document.system.schema.fields,
+          auraFields: this.document.system.schema.fields,
           isDAEEnabled: game.modules.get("dae")?.active
         }, { inplace: false });
       }
