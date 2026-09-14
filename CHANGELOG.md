@@ -1,5 +1,8 @@
 # Aura Effects Changelog
 
+## Version 2.2.2
+- Fixed a bug where simultaneously created effects could sometimes result in multiple aura regions being created for a single aura effect
+
 ## Version 2.2.1
 - Fixed a bug where tokens newly created within the bounds of an aura did not get affected by that aura
 - Fixed a potential bug in certain systems where Aura Effects sheet would fail to render

@@ -100,32 +100,39 @@ async function applyAuraEffects(actorToEffectsMap) {
  * @param {RegionData[]} toUpdate
  * @param {string[]} toDelete 
  */
-async function updateRegionsForToken({tokenUuid, toCreate, toUpdate, toDelete}) {
-  const token = await fromUuid(tokenUuid);
-  const scene = token?.parent;
-  if ( !scene ) return;
-  const batchOperations = [];
-  if ( toCreate.length ) batchOperations.push({
-    action: "create",
-    documentName: "Region",
-    parent: scene,
-    data: toCreate
-  });
-  if ( toUpdate.length ) batchOperations.push({
-    action: "update",
-    documentName: "Region",
-    parent: scene,
-    updates: toUpdate
-  });
-  if ( toDelete.length ) batchOperations.push({
-    action: "delete",
-    documentName: "Region",
-    parent: scene,
-    ids: toDelete
-  });
-  if ( !batchOperations.length ) return;
-  await gmQueue.add(() => {
-    foundry.documents.modifyBatch(batchOperations);
+async function updateRegionsForToken({tokenUuid, toCreate=[], toUpdate=[], toDelete=[]}) {
+  await gmQueue.add(async () => {
+    const token = await fromUuid(tokenUuid);
+    const scene = token?.parent;
+    if ( !scene ) return;
+    const batchOperations = [];
+    const alreadyHas = (regionData) => {
+      const origin = foundry.utils.getProperty(regionData, "flags.auraeffects.origin");
+      return token.attachments.regions.some(r => r.getFlag("auraeffects", "origin") === origin);
+    }
+    toCreate = toCreate.filter(r => !alreadyHas(r));
+    if ( toCreate.length ) batchOperations.push({
+      action: "create",
+      documentName: "Region",
+      parent: scene,
+      data: toCreate
+    });
+    toUpdate = toUpdate.filter(alreadyHas);
+    if ( toUpdate.length ) batchOperations.push({
+      action: "update",
+      documentName: "Region",
+      parent: scene,
+      updates: toUpdate
+    });
+    toDelete = toDelete.filter(id => token.regions.some(r => r.id === id));
+    if ( toDelete.length ) batchOperations.push({
+      action: "delete",
+      documentName: "Region",
+      parent: scene,
+      ids: toDelete
+    });
+    if ( !batchOperations.length ) return;
+    return foundry.documents.modifyBatch(batchOperations);
   });
   return true;
 }

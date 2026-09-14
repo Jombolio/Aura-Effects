@@ -243,7 +243,9 @@ function getRegionDataFromEffect(effect, token) {
     color: (effect.system.color ?? tokenOwner?.color)?.css,
     displayMeasurements: false,
     flags: {
-      "auraeffects.origin": effect.uuid
+      auraeffects: {
+        origin: effect.uuid
+      }
     },
     highlightMode: game.settings.get("auraeffects", "highlightMode"),
     levels: [token.level],
