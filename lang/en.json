@@ -80,6 +80,12 @@
         "NoActiveGM": "Aura Effects will not attempt to function without a GM logged in.",
         "PotentialSystemIncompatibility": "Please note that, because this system's base Active Effect definition overlaps with the fields Aura Effects adds, any Aura-type effects will not have whatever system-specific enhancements exist on normal effects.",
         "SETTINGS": {
+            "AuraShape": {
+                "Grid": "Grid (Foundry default)",
+                "Hint": "Round auras are true circles around the token, like Roll20, and ignore the grid when deciding who is inside. Grid auras follow the scene's grid and diagonal rules, which makes them square on square grids. Round auras always highlight their true shape.",
+                "Name": "Aura Shape",
+                "Round": "Round (Roll20-style)"
+            },
             "DefaultVisibility": {
                 "Hint": "When enabled, visualization will be on by default for any newly-created aura effects.",
                 "Name": "Aura Effects Default to Visible"

@@ -223,6 +223,19 @@ async function refreshConditionalAuras(token) {
 }
 
 /**
+ * Rebuild the aura regions of every token in every scene, e.g. after the aura shape setting changes.
+ * Only does anything for the active GM, so that the work isn't repeated by every connected client.
+ */
+async function refreshAllAuraRegions() {
+  if (!game.user.isActiveGM) return;
+  for (const scene of game.scenes) {
+    for (const token of scene.tokens) {
+      if (token.actor) await updateAllAuraRegions(token);
+    }
+  }
+}
+
+/**
  * Get region creation data from an aura effect and a given token
  * @param {ActiveEffect} effect 
  * @param {TokenDocument} token
@@ -236,6 +249,9 @@ function getRegionDataFromEffect(effect, token) {
     restriction.enabled = true;
     restriction.type = effect.system.collisionType;
   }
+  // "round" = Roll20-style: a true circle around the token, measured by straight-line distance from its edge.
+  // "grid" = Foundry's grid-based emanation (square on square grids with 5/5/5 diagonals).
+  const round = game.settings.get("auraeffects", "auraShape") === "round";
   const regionData = {
     attachment: {
       token: token.id
@@ -247,7 +263,7 @@ function getRegionDataFromEffect(effect, token) {
         origin: effect.uuid
       }
     },
-    highlightMode: game.settings.get("auraeffects", "highlightMode"),
+    highlightMode: round ? "shapes" : game.settings.get("auraeffects", "highlightMode"),
     levels: [token.level],
     locked: true,
     name: effect.name,
@@ -260,9 +276,9 @@ function getRegionDataFromEffect(effect, token) {
         y: token._source.y,
         width: token._source.width,
         height: token._source.height,
-        shape: token._source.shape
+        shape: round ? CONST.TOKEN_SHAPES.ELLIPSE_1 : token._source.shape
       },
-      gridBased: true,
+      gridBased: !round,
       hole: false,
       radius: token.parent.dimensions.distancePixels * effect.system.distance
     }],
@@ -279,6 +295,7 @@ export {
   executeScript,
   removeAndReplaceAuras,
   updateAllAuraRegions,
+  refreshAllAuraRegions,
   getRegionDataFromEffect,
   refreshConditionalAuras,
   auraShouldApply

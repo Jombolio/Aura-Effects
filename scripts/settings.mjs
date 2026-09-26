@@ -1,3 +1,5 @@
+import { refreshAllAuraRegions } from "./helpers.mjs";
+
 export function registerSettings() {
   // TODO: What do we wanna do here
   // game.settings.register("auraeffects", "exactCircles", {
@@ -62,5 +64,18 @@ export function registerSettings() {
       coverage: "REGION.HIGHLIGHT_MODES.coverage.label"
     },
     default: "coverage"
+  });
+  game.settings.register("auraeffects", "auraShape", {
+    name: "AURAEFFECTS.SETTINGS.AuraShape.Name",
+    hint: "AURAEFFECTS.SETTINGS.AuraShape.Hint",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {
+      round: "AURAEFFECTS.SETTINGS.AuraShape.Round",
+      grid: "AURAEFFECTS.SETTINGS.AuraShape.Grid"
+    },
+    default: "round",
+    onChange: () => refreshAllAuraRegions()
   });
 }

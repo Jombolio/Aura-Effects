@@ -28,6 +28,13 @@ In the 5e system, "Aura of Protection" is an aura that paladins get which provid
 ### Distance Calculation
 Distance is calculated by creating an attached-to-token Region for each effect, and seeing which tokens are within it.
 
+### Aura Shape
+The **Aura Shape** world setting controls how that Region is shaped:
+- **Round (Roll20-style)** (default): the aura is a true circle around the token, reaching the configured distance out from the token's edge in every direction. Whether a token is inside is decided by straight-line distance, not by grid squares.
+- **Grid (Foundry default)**: the aura follows the scene's grid and diagonal rules, as in the original module. On square grids this makes it a square.
+
+Changing the setting rebuilds every existing aura.
+
 ### Disposition
 Disposition is largely as-expected: Hostile applies only to tokens whose disposition is opposite that of the source token (note: will still apply to self unless that setting is unchecked). Friendly applies only to tokens whose disposition matches that of the source token. "Any" applies to tokens regardless of disposition. Worth noting, a "Neutral" disposition token will _never_ be considered Friendly or Hostile, nor will a "Secret" disposition token. Both will still be considered valid recipients of an "Any"-disposition aura.
 
