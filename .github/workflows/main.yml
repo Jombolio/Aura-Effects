@@ -3,12 +3,15 @@ name: Create Module Files for GitHub Release
 env:
   project_url: "https://github.com/${{github.repository}}"
   latest_manifest_url: "https://github.com/${{github.repository}}/releases/latest/download/module.json"
-  release_module_url: "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip"
-  changelog_url: "https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}"
+  release_module_url: "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name || github.ref_name}}/module.zip"
+  changelog_url: "https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name || github.ref_name}}"
 
 on:
   release:
     types: [published]
+  # Pushing a version tag (e.g. v2.3.0) also builds and publishes a release
+  push:
+    tags: ["v*"]
 
 jobs:
   build:
@@ -69,10 +72,11 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: ${{github.event.release.name}}
-          draft: ${{github.event.release.draft}}
-          prerelease: ${{github.event.release.prerelease}}
+          name: ${{github.event.release.name || github.ref_name}}
+          draft: ${{github.event.release.draft || false}}
+          prerelease: ${{github.event.release.prerelease || false}}
           token: ${{secrets.GITHUB_TOKEN}}
           artifacts: './module.json, ./module.zip'
-          tag: ${{github.event.release.tag_name}}
+          tag: ${{github.event.release.tag_name || github.ref_name}}
           body: ${{github.event.release.body}}
+          generateReleaseNotes: ${{github.event_name == 'push'}}

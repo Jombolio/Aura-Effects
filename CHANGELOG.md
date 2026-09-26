@@ -1,5 +1,8 @@
 # Aura Effects Changelog
 
+## Version 2.3.0
+- Added an "Aura Shape" world setting. "Round (Roll20-style)" (the default) makes auras true circles around the token, measured by straight-line distance from its edge; "Grid (Foundry default)" keeps the original grid-based, square-on-square-grids behaviour
+
 ## Version 2.2.2
 - Fixed a bug where simultaneously created effects could sometimes result in multiple aura regions being created for a single aura effect
 
