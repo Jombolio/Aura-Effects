@@ -251,7 +251,8 @@ function getRegionDataFromEffect(effect, token) {
   }
   // "round" = Roll20-style: a true circle around the token, measured by straight-line distance from its edge.
   // "grid" = Foundry's grid-based emanation (square on square grids with 5/5/5 diagonals).
-  const round = game.settings.get("auraeffects", "auraShape") === "round";
+  // Each aura can pick its own shape; blank means use the world setting
+  const round = (effect.system.shape || game.settings.get("auraeffects", "auraShape")) === "round";
   const regionData = {
     attachment: {
       token: token.id

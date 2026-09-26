@@ -1,5 +1,8 @@
 # Aura Effects Changelog
 
+## Version 2.4.0
+- Each aura can now choose its own shape (Round or Grid) in its Aura tab, or follow the world "Aura Shape" setting
+
 ## Version 2.3.0
 - Added an "Aura Shape" world setting. "Round (Roll20-style)" (the default) makes auras true circles around the token, measured by straight-line distance from its edge; "Grid (Foundry default)" keeps the original grid-based, square-on-square-grids behaviour
 

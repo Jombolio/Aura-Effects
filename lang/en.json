@@ -56,6 +56,13 @@
                         "hint": "An expression which, if true (or blank) means the aura should apply.",
                         "label": "Conditional Script"
                     },
+                    "shape": {
+                        "Choices": {
+                            "Default": "World Default"
+                        },
+                        "hint": "Round auras are true circles around the token (like Roll20); Grid auras follow the scene's grid. \"World Default\" uses the Aura Shape module setting.",
+                        "label": "Shape"
+                    },
                     "showRadius": {
                         "hint": "Whether to display aura borders for every user.",
                         "label": "Show Radius"
@@ -82,7 +89,7 @@
         "SETTINGS": {
             "AuraShape": {
                 "Grid": "Grid (Foundry default)",
-                "Hint": "Round auras are true circles around the token, like Roll20, and ignore the grid when deciding who is inside. Grid auras follow the scene's grid and diagonal rules, which makes them square on square grids. Round auras always highlight their true shape.",
+                "Hint": "The default shape for auras. Round auras are true circles around the token, like Roll20, and ignore the grid when deciding who is inside. Grid auras follow the scene's grid and diagonal rules, which makes them square on square grids. Round auras always highlight their true shape. Individual auras can override this in their Aura tab.",
                 "Name": "Aura Shape",
                 "Round": "Round (Roll20-style)"
             },

@@ -40,6 +40,16 @@ export default function AuraActiveEffectDataMixin(ActiveEffectClass) {
         evaluatePreApply: new BooleanField({ initial: false }),
         overrideName: new StringField({ initial: '' }),
         script: new JavaScriptField(),
+        shape: new StringField({
+          choices: {
+            "": "AURAEFFECTS.ACTIVEEFFECT.Aura.FIELDS.shape.Choices.Default",
+            round: "AURAEFFECTS.SETTINGS.AuraShape.Round",
+            grid: "AURAEFFECTS.SETTINGS.AuraShape.Grid"
+          },
+          required: true,
+          blank: true,
+          initial: ""
+        }),
         stashedChanges: new ArrayField(new SchemaField({
           key: new StringField(),
           value: new StringField(),
