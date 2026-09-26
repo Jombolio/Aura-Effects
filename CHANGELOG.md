@@ -1,5 +1,8 @@
 # Aura Effects Changelog
 
+## Version 2.4.1
+- Added Czech, German, Italian and Brazilian Portuguese translations for the aura shape options
+
 ## Version 2.4.0
 - Each aura can now choose its own shape (Round or Grid) in its Aura tab, or follow the world "Aura Shape" setting
 

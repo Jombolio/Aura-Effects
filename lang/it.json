@@ -56,6 +56,13 @@
                         "hint": "Un’espressione che, se vera (o vuota), consente l’applicazione dell’aura.",
                         "label": "Script Condizionale"
                     },
+                    "shape": {
+                        "Choices": {
+                            "Default": "Predefinito del mondo"
+                        },
+                        "hint": "Le aure rotonde sono veri cerchi attorno al token (come in Roll20); le aure a griglia seguono la griglia della scena. \"Predefinito del mondo\" usa l'impostazione del modulo Forma dell'aura.",
+                        "label": "Forma"
+                    },
                     "showRadius": {
                         "hint": "Mostra i bordi dell’aura a tutti gli utenti.",
                         "label": "Mostra Raggio"
@@ -80,6 +87,12 @@
         "NoActiveGM": "Aura Effects non funzionerà senza un GM attivo.",
         "PotentialSystemIncompatibility": "Si prega di notare che, poiché la definizione base dell'Effetto Attivo di questo sistema si sovrappone ai campi aggiunti dagli Effetti Aura, gli effetti di tipo Aura non avranno i miglioramenti specifici del sistema presenti sugli effetti normali.",
         "SETTINGS": {
+            "AuraShape": {
+                "Grid": "Griglia (predefinito di Foundry)",
+                "Hint": "La forma predefinita delle aure. Le aure rotonde sono veri cerchi attorno al token, come in Roll20, e ignorano la griglia nel decidere chi si trova all'interno. Le aure a griglia seguono la griglia della scena e le regole delle diagonali, il che le rende quadrate sulle griglie quadrate. Le aure rotonde evidenziano sempre la loro forma reale. Le singole aure possono ignorare questa impostazione nella loro scheda Aura.",
+                "Name": "Forma dell'aura",
+                "Round": "Rotonda (stile Roll20)"
+            },
             "DefaultVisibility": {
                 "Hint": "Se abilitato, le nuove aure saranno visibili per impostazione predefinita.",
                 "Name": "Visibilità Predefinita delle Aura Effects"

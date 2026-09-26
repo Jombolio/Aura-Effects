@@ -56,6 +56,13 @@
                         "hint": "Code-Ausdruck, der bestimmt, ob die Aura auf ein Ziel angewendet werden soll (wenn er leer ist oder true zurückgibt).",
                         "label": "Bedingungs-Skript"
                     },
+                    "shape": {
+                        "Choices": {
+                            "Default": "Welt-Standard"
+                        },
+                        "hint": "Runde Auren sind echte Kreise um das Token (wie in Roll20); Raster-Auren folgen dem Raster der Szene. „Welt-Standard“ verwendet die Moduleinstellung Aura-Form.",
+                        "label": "Form"
+                    },
                     "showRadius": {
                         "hint": "Ob die Ausmaße der Aura für alle Spieler angezeigt werden sollen.",
                         "label": "Radius zeigen"
@@ -69,6 +76,12 @@
         "ConvertToNormalHint": "Setzt den Effekt auf einen normalen Effekt zurück; Auraeinstellungen gehen verloren.",
         "NoActiveGM": "Aureneffekte funktionieren nicht ohne eingeloggte Spielleitung.",
         "SETTINGS": {
+            "AuraShape": {
+                "Grid": "Raster (Foundry-Standard)",
+                "Hint": "Die Standardform für Auren. Runde Auren sind echte Kreise um das Token, wie in Roll20, und ignorieren das Raster bei der Entscheidung, wer sich darin befindet. Raster-Auren folgen dem Raster und den Diagonalregeln der Szene, wodurch sie auf quadratischen Rastern quadratisch sind. Runde Auren heben immer ihre wirkliche Form hervor. Einzelne Auren können dies in ihrem Aura-Tab überschreiben.",
+                "Name": "Aura-Form",
+                "Round": "Rund (wie Roll20)"
+            },
             "DefaultVisibility": {
                 "Hint": "Aktiviert werden neue Aureneffekte standardmäßig visualisiert.",
                 "Name": "Aura-Effekte standardmäßig sichtbar"

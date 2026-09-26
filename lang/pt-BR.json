@@ -56,6 +56,13 @@
                         "hint": "Uma expressão que, se verdadeira (ou em branco), significa que a aura deve ser aplicada.",
                         "label": "Script Condicional"
                     },
+                    "shape": {
+                        "Choices": {
+                            "Default": "Padrão do Mundo"
+                        },
+                        "hint": "Auras redondas são círculos de verdade ao redor do token (como no Roll20); auras de grade seguem a grade da cena. \"Padrão do Mundo\" usa a configuração do módulo Formato da Aura.",
+                        "label": "Formato"
+                    },
                     "showRadius": {
                         "hint": "Se deve ou não exibir bordas de aura para cada usuário.",
                         "label": "Mostrar Raio"
@@ -80,6 +87,12 @@
         "NoActiveGM": "Aura Effects não funcionará sem um Mestre conectado.",
         "PotentialSystemIncompatibility": "Note que, como a definição básica de Efeito Ativo deste sistema se sobrepõe aos campos adicionados pelo Aura Effects, quaisquer efeitos do tipo Aura não terão os aprimoramentos específicos do sistema que existem nos efeitos normais.",
         "SETTINGS": {
+            "AuraShape": {
+                "Grid": "Grade (padrão do Foundry)",
+                "Hint": "O formato padrão das auras. Auras redondas são círculos de verdade ao redor do token, como no Roll20, e ignoram a grade ao decidir quem está dentro. Auras de grade seguem a grade da cena e as regras de diagonais, o que as torna quadradas em grades quadradas. Auras redondas sempre destacam seu formato real. Cada aura pode substituir isso na sua aba Aura.",
+                "Name": "Formato da Aura",
+                "Round": "Redonda (estilo Roll20)"
+            },
             "DefaultVisibility": {
                 "Hint": "Quando habilitado, a visualização será ativada por padrão para quaisquer efeitos de aura recém-criados.",
                 "Name": "Aura Effects Visíveis por Padrão"

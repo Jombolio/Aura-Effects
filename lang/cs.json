@@ -56,6 +56,13 @@
                         "hint": "Výraz, který, pokud je pravdivý či prázdný, znamená, že se má aura použít.",
                         "label": "Podmíněný skript"
                     },
+                    "shape": {
+                        "Choices": {
+                            "Default": "Výchozí pro svět"
+                        },
+                        "hint": "Kulaté aury jsou skutečné kruhy kolem tokenu (jako v Roll20); aury podle mřížky se řídí mřížkou scény. „Výchozí pro svět“ použije nastavení modulu Tvar aury.",
+                        "label": "Tvar"
+                    },
                     "showRadius": {
                         "hint": "Po zaškrtnutí se okraj aury zobrazí u všech uživatelů.",
                         "label": "Zobrazit poloměr?"
@@ -79,6 +86,12 @@
         },
         "NoActiveGM": "Aura Effects nebude fungovat, pokud nebude přihlášen žádný PJ.",
         "SETTINGS": {
+            "AuraShape": {
+                "Grid": "Mřížka (výchozí ve Foundry)",
+                "Hint": "Výchozí tvar aur. Kulaté aury jsou skutečné kruhy kolem tokenu, jako v Roll20, a při určování, kdo je uvnitř, ignorují mřížku. Aury podle mřížky se řídí mřížkou scény a pravidly pro úhlopříčky, takže na čtvercové mřížce jsou čtvercové. Kulaté aury vždy zvýrazňují svůj skutečný tvar. Jednotlivé aury to mohou změnit na své kartě Aura.",
+                "Name": "Tvar aury",
+                "Round": "Kulatá (jako v Roll20)"
+            },
             "DefaultVisibility": {
                 "Hint": "Po zaškrtnutí bude vizualizace ve výchozím nastavení zapnutá pro všechny nově vytvořené efekty aury.",
                 "Name": "Výchozí viditelnost efektů aur?"
